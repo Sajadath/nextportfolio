@@ -8,7 +8,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://sajadath.portfolio.vercel.app"),
+  metadataBase: new URL("https://sajadathportfolio.vercel.app/"),
   title: "Sajad Atharyan Portfolio",
   authors: {
     name: "sajad atharyan",
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     title: "Sajad Atharyan Portfolio",
     description: `I am a Front-End Developer with a strong passion for creating
                     interactive, user-friendly, and visually appealing web applications.`,
-    url: "https://sajadath.portfolio.vercel.app",
+    url: "https://sajadathportfolio.vercel.app/",
     type: "website",
     images: [
       {
