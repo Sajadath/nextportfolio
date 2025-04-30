@@ -6,7 +6,7 @@ export default function HeroSection() {
       <div className="relative px-8">
         <h1 className="text-4xl font-bold lg:text-7xl">
           Hi, <br />
-          <span className="underline underline-offset-8">
+          <span className="text-5xl underline underline-offset-8">
             I&apos;m Sajad
             <br />
           </span>
