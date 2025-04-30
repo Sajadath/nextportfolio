@@ -2,11 +2,7 @@ import Link from "next/link";
 import React from "react";
 import { SiGithub, SiInstagram, SiTelegram } from "react-icons/si";
 
-export default function Header({
-  homeRef,
-}: {
-  homeRef: React.RefObject<HTMLElement | null>;
-}) {
+export default function Header() {
   const socials = [
     {
       link: "https://t.me/sajadath",
@@ -26,7 +22,6 @@ export default function Header({
   ];
   return (
     <header
-      ref={homeRef}
       id="home"
       className="flex h-[20dvh] w-full flex-col-reverse items-center justify-center gap-4 py-10 sm:flex-row sm:justify-around sm:space-y-0"
     >
