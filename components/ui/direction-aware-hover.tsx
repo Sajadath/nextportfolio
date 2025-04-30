@@ -6,12 +6,14 @@ import { AnimatePresence, motion } from "motion/react";
 import { cn } from "@/lib/utils";
 
 export const DirectionAwareHover = ({
+  inputType,
   imageUrl,
   children,
   childrenClassName,
   imageClassName,
   className,
 }: {
+  inputType: string;
   imageUrl: string;
   children: React.ReactNode | string;
   childrenClassName?: string;
@@ -30,7 +32,7 @@ export const DirectionAwareHover = ({
     if (!ref.current) return;
 
     const direction = getDirection(event, ref.current);
-    console.log("direction", direction);
+
     switch (direction) {
       case 0:
         setDirection("top");
@@ -60,6 +62,21 @@ export const DirectionAwareHover = ({
     const d = Math.round(Math.atan2(y, x) / 1.57079633 + 5) % 4;
     return d;
   };
+
+  if (inputType == "phone") {
+    return (
+      <div className="relative">
+        <img
+          alt="image"
+          className={cn("h-full w-full object-cover", imageClassName)}
+          width="1000"
+          height="1000"
+          src={imageUrl}
+        />
+        {children}
+      </div>
+    );
+  }
 
   return (
     <motion.div

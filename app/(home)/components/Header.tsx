@@ -2,7 +2,11 @@ import Link from "next/link";
 import React from "react";
 import { SiGithub, SiInstagram, SiTelegram } from "react-icons/si";
 
-export default function Navbar() {
+export default function Header({
+  homeRef,
+}: {
+  homeRef: React.RefObject<HTMLElement | null>;
+}) {
   const socials = [
     {
       link: "https://t.me/sajadath",
@@ -21,7 +25,11 @@ export default function Navbar() {
     },
   ];
   return (
-    <nav className="flex w-full flex-col-reverse items-center justify-center gap-4 py-10 sm:flex-row sm:justify-around sm:space-y-0">
+    <header
+      ref={homeRef}
+      id="home"
+      className="flex h-[20dvh] w-full flex-col-reverse items-center justify-center gap-4 py-10 sm:flex-row sm:justify-around sm:space-y-0"
+    >
       <h1 className="-rotate-2 text-center text-2xl font-bold underline decoration-[rgb(93_24_220)] underline-offset-8 sm:text-left">
         Sajad Atharyan 🧑🏻‍💻
       </h1>
@@ -41,6 +49,6 @@ export default function Navbar() {
           );
         })}
       </div>
-    </nav>
+    </header>
   );
 }

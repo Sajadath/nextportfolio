@@ -20,7 +20,11 @@ import {
   SiTailwindcss,
 } from "react-icons/si";
 
-export default function skills() {
+export default function skills({
+  skillsRef,
+}: {
+  skillsRef: React.RefObject<HTMLElement | null>;
+}) {
   const skills = [
     {
       text: "React",
@@ -76,9 +80,9 @@ export default function skills() {
     { text: "Gitlab", Icon: SiGitlab },
   ];
   return (
-    <div className="mx-auto max-w-5xl px-8">
+    <section id="skills" ref={skillsRef} className="mx-auto max-w-5xl px-8">
       <Heading>Skills</Heading>
       <HoverEffect items={skills} />
-    </div>
+    </section>
   );
 }

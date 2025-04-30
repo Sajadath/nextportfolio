@@ -6,10 +6,10 @@ const customFont = localFont({
 });
 export default function Footer() {
   return (
-    <div
+    <footer
       className={`mt-10 border-t text-center text-3xl ${customFont.className}`}
     >
       Made by SajadAth Powered By Next.Js
-    </div>
+    </footer>
   );
 }

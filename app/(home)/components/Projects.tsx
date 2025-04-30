@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import { IoFingerPrintSharp } from "react-icons/io5";
 import {
   SiCreatereactapp,
@@ -21,18 +22,32 @@ import Heading from "./Heading";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
+import InputDetection from "./Touchscreen";
 
-export default function Projects() {
+export default function Projects({
+  projectsRef,
+}: {
+  projectsRef: React.RefObject<HTMLElement | null>;
+}) {
+  const [inputType, setInputType] = useState("mouse");
+  const [additionalInfo, setAdditionalInfo] = useState<{
+    shown: boolean;
+    index: number | null;
+  }>({
+    shown: true,
+    index: null,
+  });
+
   const projects = [
     {
       title: "The Wild Oasis Hotel Website",
-      tech: [
-        SiNextdotjs,
-        SiReact,
-        SiTailwindcss,
-        SiSupabase,
-        IoFingerPrintSharp,
-        SiGoogle,
+      techs: [
+        { Icon: SiNextdotjs, name: "Next JS" },
+        { Icon: SiReact, name: "React" },
+        { Icon: SiTailwindcss, name: "Tailwind CSS" },
+        { Icon: SiSupabase, name: "Supabase" },
+        { Icon: IoFingerPrintSharp, name: "AuthJS" },
+        { Icon: SiGoogle, name: "Google Auth" },
       ],
       link: "https://sajadathhotel.vercel.app",
       cover: "/wild-oasis.jpg",
@@ -40,87 +55,156 @@ export default function Projects() {
     },
     {
       title: "Old Portfolio",
-      tech: [SiHtml5, SiJavascript, SiCss3],
+      techs: [
+        { Icon: SiHtml5, name: "HTML5" },
+        { Icon: SiJavascript, name: "JavaScript" },
+        { Icon: SiCss3, name: "CSS3" },
+      ],
       link: "https://sajadath.github.io/portfolio/",
       cover: "/old-portfolio.jpg",
       background: "bg-transparent",
     },
     {
       title: "SadrTell Demo Website",
-      tech: [SiReact, SiVite, SiTailwindcss, SiReactrouter, SiRedux],
+      techs: [
+        { Icon: SiReact, name: "React" },
+        { Icon: SiVite, name: "Vite" },
+        { Icon: SiTailwindcss, name: "Tailwind CSS" },
+        { Icon: SiReactrouter, name: "React Router" },
+        { Icon: SiRedux, name: "Redux" },
+      ],
       link: "https://sadrtell.vercel.app",
       cover: "/demo-sadrtell.jpg",
       background: "bg-transparent",
     },
     {
       title: "Fast Pizza Order",
-      tech: [SiReact, SiTailwindcss, SiVite, SiRedux],
+      techs: [
+        { Icon: SiReact, name: "React" },
+        { Icon: SiTailwindcss, name: "Tailwind CSS" },
+        { Icon: SiVite, name: "Vite" },
+        { Icon: SiRedux, name: "Redux" },
+      ],
       link: "https://fastpizzasajadath.vercel.app/",
       cover: "/fastPizza.jpg",
       background: "bg-transparent",
     },
     {
       title: "Official SadrTell Website",
-      tech: [SiReact, SiCss3, SiCssmodules, SiWordpress, SiVite],
+      techs: [
+        { Icon: SiReact, name: "React" },
+        { Icon: SiCss3, name: "CSS3" },
+        { Icon: SiCssmodules, name: "CSS Modules" },
+        { Icon: SiWordpress, name: "WordPress" },
+        { Icon: SiVite, name: "Vite" },
+      ],
       link: "https://sadrtell.ir",
       cover: "/sadrtell.jpg",
       background: "bg-transparent",
     },
     {
       title: "usePopCorn Website",
-      tech: [SiReact, SiCss3, SiCreatereactapp],
+      techs: [
+        { Icon: SiReact, name: "React" },
+        { Icon: SiCss3, name: "CSS3" },
+        { Icon: SiCreatereactapp, name: "Create React App" },
+      ],
       link: "https://usepopcorn-beta-three.vercel.app/",
       cover: "/usepopcorn.jpg",
       background: "bg-transparent",
     },
     {
       title: "Small React Quiz App",
-      tech: [SiReact, SiCss3, SiCreatereactapp],
+      techs: [
+        { Icon: SiReact, name: "React" },
+        { Icon: SiCss3, name: "CSS3" },
+        { Icon: SiCreatereactapp, name: "Create React App" },
+      ],
       link: "https://reactquiz-nine.vercel.app/",
       cover: "/react-small-quiz.jpg",
       background: "bg-transparent",
     },
     {
       title: "Small TodoList App",
-      tech: [SiReact, SiCss3, SiCreatereactapp],
+      techs: [
+        { Icon: SiReact, name: "React" },
+        { Icon: SiCss3, name: "CSS3" },
+        { Icon: SiCreatereactapp, name: "Create React App" },
+      ],
       link: "https://todolist-zeta-eosin.vercel.app/",
       cover: "/todolist.jpg",
       background: "bg-transparent",
     },
     {
       title: "Trip Location , WorldWise",
-      tech: [SiReact, SiVite, SiCssmodules, SiLeaflet],
+      techs: [
+        { Icon: SiReact, name: "React" },
+        { Icon: SiVite, name: "Vite" },
+        { Icon: SiCssmodules, name: "CSS Modules" },
+        { Icon: SiLeaflet, name: "Leaflet" },
+      ],
       link: "https://github.com/Sajadath/worldwise/tree/master",
       cover: "/worldwise.jpg",
       background: "bg-transparent",
     },
   ];
   return (
-    <div className="mt-5 py-10 sm:p-0">
-      <Heading cyan={true}>Projects</Heading>
-      <div className="mt-20 grid grid-cols-1 gap-5 sm:grid-cols-2">
-        {projects.map((project, index) => {
-          return (
-            <Link target="_blank" href={project.link} key={index}>
-              <div className={cn("p-[1px]", project.background)}>
-                <DirectionAwareHover
-                  className="w-full cursor-pointer space-y-5"
-                  imageUrl={project.cover}
-                >
-                  <div className="w-fit space-y-5 rounded-lg bg-black/50 p-4">
-                    <h1 className="text-2xl font-bold">{project.title}</h1>
-                    <div className="flex items-center gap-5">
-                      {project.tech.map((Icon, index) => {
-                        return <Icon className="h-8 w-8" key={index} />;
-                      })}
+    <>
+      <InputDetection inputType={inputType} setInputType={setInputType} />
+      <section ref={projectsRef} id="projects" className="mt-5 py-10 sm:p-0">
+        <Heading cyan={true}>Projects</Heading>
+        <div className="mt-20 grid grid-cols-2 gap-5 px-9 sm:grid-cols-2">
+          {projects.map((project, index) => {
+            return (
+              <Link target="_blank" href={project.link} key={index}>
+                <div className={cn("p-[1px]", project.background)}>
+                  <DirectionAwareHover
+                    className="w-full cursor-pointer space-y-5"
+                    imageUrl={project.cover}
+                    inputType={inputType}
+                  >
+                    <div className="w-fit space-y-1 rounded-lg bg-black/50 p-1 sm:space-y-5 sm:p-4">
+                      <h1 className="text-[8px] font-bold sm:text-xl md:text-2xl">
+                        {project.title}
+                      </h1>
+                      <div className="flex items-center gap-2 sm:gap-5">
+                        {project.techs.map((tech, index) => {
+                          const { Icon, name } = tech;
+
+                          return (
+                            <div key={index} className="relative h-fit w-fit">
+                              <Icon
+                                onMouseEnter={() =>
+                                  setAdditionalInfo({
+                                    shown: true,
+                                    index: index,
+                                  })
+                                }
+                                onMouseLeave={() =>
+                                  setAdditionalInfo({
+                                    shown: false,
+                                    index: null,
+                                  })
+                                }
+                                className={`${additionalInfo.shown && additionalInfo.index == index ? "scale-125" : "scale-100"} h-3 w-3 transition-all duration-300 sm:h-5 sm:w-5 md:h-8 md:w-8`}
+                              />
+                              <h3
+                                className={`absolute bottom-full ${additionalInfo.shown && index == additionalInfo.index ? "block" : "hidden"} left-1/2 -translate-x-1/2 rounded-lg bg-black px-2 py-1 text-lg text-nowrap`}
+                              >
+                                {name}
+                              </h3>
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
-                  </div>
-                </DirectionAwareHover>
-              </div>
-            </Link>
-          );
-        })}
-      </div>
-    </div>
+                  </DirectionAwareHover>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </section>
+    </>
   );
 }
