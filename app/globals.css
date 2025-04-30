@@ -114,6 +114,10 @@
 html {
   scroll-behavior: smooth;
 }
+::selection {
+  background: #00ff88;
+  color: black;
+}
 @layer base {
   * {
     @apply border-border outline-ring/50;
