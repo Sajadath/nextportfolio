@@ -74,7 +74,7 @@ export default function Page() {
 
   return (
     <>
-      <div className="relative min-h-dvh bg-black">
+      <div className="relative min-h-[100vh] bg-black">
         <div ref={homeRef} className="mx-auto h-dvh max-w-7xl">
           <Header />
           <NavigationMenu

@@ -37,9 +37,9 @@ export default function NavigationMenu({
       <div className="fixed top-[2%] right-4 z-50 h-fit w-fit bg-transparent">
         <button
           onClick={() => setOpenedNavbar(!openedNavbar)}
-          className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-4 border-[#00ff88] bg-transparent text-xl font-bold text-[#00ff88] shadow-[0_0_10px_#00ff88,0_0_20px_#00ff88] transition-all duration-300 hover:shadow-[0_0_15px_#00ff88,0_0_250px_#00ff88] focus:outline-none active:scale-200"
+          className="group flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border-4 border-[#00ff88] bg-transparent text-xl font-bold text-[#00ff88] shadow-[0_0_10px_#00ff88,0_0_20px_#00ff88] transition-all duration-300 hover:shadow-[0_0_15px_#00ff88,0_0_250px_#00ff88] focus:outline-none active:scale-200 active:duration-200"
         >
-          <GiHamburgerMenu className="h-6 w-6" />
+          <GiHamburgerMenu className="h-6 w-6 transition-transform duration-300 group-active:scale-90" />
         </button>
       </div>
       <nav
