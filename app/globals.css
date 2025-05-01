@@ -537,4 +537,21 @@ html {
   }
 
   /* checkbox end */
+
+  /* scroll bar */
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgb(48, 48, 48);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgb(185, 185, 185);
+  }
+
+  ::-webkit-scrollbar-track {
+    background: black;
+  }
 }
