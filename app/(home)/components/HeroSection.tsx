@@ -1,4 +1,4 @@
-import Link from "next/link";
+import ModalOpener from "./ModalOpener";
 
 export default function HeroSection() {
   return (
@@ -22,12 +22,7 @@ export default function HeroSection() {
           complex problems, learning new tools, and continuously improving my
           skills to deliver high-quality solutions that make a difference.
         </p>
-        <Link
-          className="syledButton mx-auto block w-fit font-semibold text-black hover:text-white sm:mx-0"
-          href={"mailto:sajadath1@gmail.com"}
-        >
-          Contact Me
-        </Link>
+        <ModalOpener />
       </div>
       <div className="flex flex-col items-center justify-center gap-3 py-10">
         <p className="text-xs">Scroll Down For More Info</p>
