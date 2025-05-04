@@ -58,10 +58,6 @@ export default function skills({
       Icon: SiCssmodules,
     },
     {
-      text: "Next.Js",
-      Icon: SiNextdotjs,
-    },
-    {
       text: "HTML5",
       Icon: SiHtml5,
     },
