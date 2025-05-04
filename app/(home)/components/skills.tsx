@@ -18,6 +18,7 @@ import {
   SiRedux,
   SiSupabase,
   SiTailwindcss,
+  SiTypescript,
 } from "react-icons/si";
 
 export default function skills({
@@ -34,6 +35,7 @@ export default function skills({
       text: "Next.Js",
       Icon: SiNextdotjs,
     },
+    { text: "TypeScript", Icon: SiTypescript },
     {
       text: "TailWind",
       Icon: SiTailwindcss,
