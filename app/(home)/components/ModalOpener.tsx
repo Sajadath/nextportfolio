@@ -1,3 +1,4 @@
+"use client";
 import {
   Modal,
   ModalBody,
@@ -8,13 +9,20 @@ import SocialButtons from "./SocialButtons";
 import { SiGithub, SiTelegram } from "react-icons/si";
 import { BiLogoGmail } from "react-icons/bi";
 import { LuInstagram } from "react-icons/lu";
+import { motion } from "motion/react";
 
 export default function ModalOpener() {
   return (
     <Modal>
       {/* Trigger Button */}
       <ModalTrigger>
-        <span>Contact Me</span>
+        <motion.div
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+        >
+          Contact Me
+        </motion.div>
       </ModalTrigger>
 
       {/* Modal Body */}

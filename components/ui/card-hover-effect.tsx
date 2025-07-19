@@ -25,7 +25,11 @@ export const HoverEffect = ({
       {items.map((item, idx) => {
         const Icon = item.Icon;
         return (
-          <div
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.1 * idx }}
             key={idx}
             className="group relative block h-full w-full p-2"
             onMouseEnter={() => setHoveredIndex(idx)}
@@ -56,7 +60,7 @@ export const HoverEffect = ({
                 </p>
               </div>
             </div>
-          </div>
+          </motion.div>
         );
       })}
     </div>

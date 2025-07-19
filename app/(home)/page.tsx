@@ -73,26 +73,24 @@ export default function Page() {
   };
 
   return (
-    <>
-      <div className="relative min-h-[100vh] bg-black">
-        <div ref={homeRef} className="mx-auto h-dvh max-w-7xl">
-          <Header />
-          <NavigationMenu
-            checkedIndex={checkedIndex}
-            setCheckedIndex={setCheckedIndex}
-            homeRef={homeRef}
-            skillsRef={skillsRef}
-            projectsRef={projectsRef}
-            scrollToSection={scrollToSection}
-          />
-          <HeroSection />
-        </div>
-        <div className="mx-auto mt-0 max-w-7xl sm:mt-8">
-          <Skills skillsRef={skillsRef} />
-          <Projects projectsRef={projectsRef} />
-          <Footer />
-        </div>
+    <div className="relative max-w-full overflow-hidden bg-black">
+      <div ref={homeRef} className="mx-auto h-dvh max-w-7xl">
+        <Header />
+        <NavigationMenu
+          checkedIndex={checkedIndex}
+          setCheckedIndex={setCheckedIndex}
+          homeRef={homeRef}
+          skillsRef={skillsRef}
+          projectsRef={projectsRef}
+          scrollToSection={scrollToSection}
+        />
+        <HeroSection />
       </div>
-    </>
+      <div className="mx-auto mt-0 max-w-7xl sm:mt-8">
+        <Skills skillsRef={skillsRef} />
+        <Projects projectsRef={projectsRef} />
+        <Footer />
+      </div>
+    </div>
   );
 }

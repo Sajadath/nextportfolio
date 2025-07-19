@@ -1,15 +1,13 @@
-import React from "react";
 import localFont from "next/font/local";
+import FooterText from "./FooterText";
 const customFont = localFont({
   src: "../../fonts/JustAnotherHand-Regular.ttf",
   display: "swap",
 });
 export default function Footer() {
   return (
-    <footer
-      className={`mt-10 border-t text-center text-3xl ${customFont.className}`}
-    >
-      Made by SajadAth Powered By Next.Js
+    <footer className={`mt-10 text-center text-3xl ${customFont.className}`}>
+      <FooterText />
     </footer>
   );
 }

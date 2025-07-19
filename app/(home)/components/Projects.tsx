@@ -23,6 +23,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 import InputDetection from "./Touchscreen";
+import { AnimatePresence, motion } from "motion/react";
 
 export default function Projects({
   projectsRef,
@@ -157,7 +158,17 @@ export default function Projects({
           {projects.map((project, index) => {
             return (
               <Link target="_blank" href={project.link} key={index}>
-                <div className={cn("p-[1px]", project.background)}>
+                <motion.div
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{
+                    duration: 0.8,
+                    ease: "easeOut",
+                    delay: 0.2 * index,
+                  }}
+                  className={`${cn("p-[1px]", project.background)} rounded-lg`}
+                >
                   <DirectionAwareHover
                     className="w-full cursor-pointer space-y-5"
                     imageUrl={project.cover}
@@ -188,18 +199,26 @@ export default function Projects({
                                 }
                                 className={`${additionalInfo.shown && additionalInfo.index == index ? "scale-125" : "scale-100"} h-3 w-3 transition-all duration-300 sm:h-5 sm:w-5 md:h-8 md:w-8`}
                               />
-                              <h3
-                                className={`absolute bottom-full ${additionalInfo.shown && index == additionalInfo.index ? "block" : "hidden"} left-1/2 -translate-x-1/2 rounded-lg bg-black px-2 py-1 text-lg text-nowrap`}
-                              >
-                                {name}
-                              </h3>
+                              <AnimatePresence>
+                                {additionalInfo.shown &&
+                                index == additionalInfo.index ? (
+                                  <motion.h3
+                                    initial={{ opacity: 0, y: -10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: -10 }}
+                                    className={`absolute bottom-[120%] left-1/2 -translate-x-1/2 rounded-lg bg-black px-2 py-1 text-lg text-nowrap`}
+                                  >
+                                    {name}
+                                  </motion.h3>
+                                ) : null}
+                              </AnimatePresence>
                             </div>
                           );
                         })}
                       </div>
                     </div>
                   </DirectionAwareHover>
-                </div>
+                </motion.div>
               </Link>
             );
           })}

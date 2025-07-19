@@ -48,15 +48,21 @@ export const ModalTrigger = ({
 }) => {
   const { setOpen } = useModal();
   return (
-    <button
-      className={cn(
-        "syledButton mx-auto block w-fit font-semibold text-black hover:text-white sm:mx-0",
-        className,
-      )}
-      onClick={() => setOpen(true)}
+    <motion.div
+      initial={{ opacity: 0, x: -90 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
     >
-      {children}
-    </button>
+      <button
+        className={cn(
+          "syledButton mx-auto block w-fit font-semibold text-black hover:text-white sm:mx-0",
+          className,
+        )}
+        onClick={() => setOpen(true)}
+      >
+        {children}
+      </button>
+    </motion.div>
   );
 };
 
@@ -223,6 +229,22 @@ export const useOutsideClick = (
   ref: React.RefObject<HTMLElement | null>, // Allow null in the type
   callback: (event: MouseEvent | TouchEvent) => void, // Explicitly define the callback type
 ) => {
+  const { setOpen, open } = useModal();
+
+  const escClose = React.useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+      }
+    },
+    [setOpen],
+  );
+  useEffect(() => {
+    if (open) document.addEventListener("keydown", escClose);
+    return () => {
+      document.removeEventListener("keydown", escClose);
+    };
+  }, [open, escClose]);
   useEffect(() => {
     const listener = (event: MouseEvent | TouchEvent) => {
       if (!ref.current || ref.current.contains(event.target as Node)) {
