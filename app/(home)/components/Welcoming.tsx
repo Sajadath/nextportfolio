@@ -37,14 +37,14 @@ function Welcoming() {
           }}
           className="w-1 bg-black py-10"
         />
-        <motion.h1
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.2, duration: 1, ease: "easeInOut" }}
-          className="text-center text-4xl font-bold"
+          className="w-fit text-center text-2xl font-bold"
         >
           Welcome to My Portfolio
-        </motion.h1>
+        </motion.h2>
       </div>
     </motion.div>
   );

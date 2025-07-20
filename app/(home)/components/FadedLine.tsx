@@ -7,7 +7,7 @@ function FadedLine() {
     <motion.div
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
-      transition={{ duration: 1.5, delay: 3.3 }}
+      transition={{ duration: 1.5, delay: 3.5 }}
       className="h-[1px] w-full bg-gradient-to-r from-transparent via-white to-transparent"
     />
   );
