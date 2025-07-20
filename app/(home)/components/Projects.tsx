@@ -41,7 +41,7 @@ export default function Projects({
 
   const projects = [
     {
-      title: "The Wild Oasis Hotel Website",
+      title: " Hotel Website",
       techs: [
         { Icon: SiNextdotjs, name: "Next JS" },
         { Icon: SiReact, name: "React" },

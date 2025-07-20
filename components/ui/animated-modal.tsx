@@ -51,7 +51,7 @@ export const ModalTrigger = ({
     <motion.div
       initial={{ opacity: 0, x: -90 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.8, delay: 5.7, ease: "easeOut" }}
     >
       <button
         className={cn(

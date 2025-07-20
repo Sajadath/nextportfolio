@@ -28,9 +28,9 @@ export default function Header() {
       className="flex h-[20dvh] w-full flex-col-reverse items-center justify-center gap-4 py-10 sm:flex-row sm:justify-around sm:space-y-0"
     >
       <motion.h1
-        initial={{ opacity: 0, scale: 1.3 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
+        initial={{ opacity: 0, scale: 1.5, y: -20 }}
+        animate={{ opacity: 1, scale: 1, y: 0 }}
+        transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
         className="text-center text-2xl font-bold underline decoration-[rgb(93_24_220)] underline-offset-8 sm:text-left"
       >
         Sajad Atharyan 🧑🏻‍💻

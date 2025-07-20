@@ -19,7 +19,7 @@ export default function ModalOpener() {
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8, duration: 0.8, ease: "easeOut" }}
+          transition={{ delay: 6.6, duration: 0.8, ease: "easeOut" }}
         >
           Contact Me
         </motion.div>

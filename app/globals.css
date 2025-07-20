@@ -266,7 +266,8 @@ html {
     display: inline-block;
     overflow: hidden;
     white-space: nowrap;
-    animation: typing 1500ms steps(30, end) 0ms 1 normal forwards;
+    width: 0;
+    animation: typing 1000ms steps(30, end) 3100ms 1 normal forwards;
     position: relative;
   }
 
