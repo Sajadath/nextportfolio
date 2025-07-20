@@ -20,7 +20,7 @@ export default function NavigationMenu({
   scrollToSection,
 }: NavigationMenuProps) {
   const [openedNavbar, setOpenedNavbar] = useState(false);
-  const navBarMenu = ["home", "skills", "projects"];
+  const navBarMenu = ["Home", "Skills", "Projects"];
 
   const handleCheckboxChange = (index: number) => {
     if (checkedIndex !== index) {

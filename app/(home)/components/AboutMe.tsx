@@ -4,8 +4,8 @@ import { motion } from "motion/react";
 function AboutMe() {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 50 }}
-      animate={{ opacity: 1, scale: 1 }}
+      initial={{ opacity: 0, x: 40 }}
+      animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.8, delay: 4.7, ease: "easeOut" }}
       className="overflow-hidden py-5 pr-0 text-xs text-neutral-200"
     >

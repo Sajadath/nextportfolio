@@ -1,7 +1,7 @@
 "use client";
 import { motion } from "motion/react";
 import Link from "next/link";
-import React from "react";
+import { IoCodeSlash } from "react-icons/io5";
 import { SiGithub, SiInstagram, SiTelegram } from "react-icons/si";
 
 export default function Header() {
@@ -27,14 +27,17 @@ export default function Header() {
       id="home"
       className="flex h-[20dvh] w-full flex-col-reverse items-center justify-center gap-4 py-10 sm:flex-row sm:justify-around sm:space-y-0"
     >
-      <motion.h1
+      <motion.div
         initial={{ opacity: 0, scale: 1.5, y: -20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
-        className="text-center text-2xl font-bold underline decoration-[rgb(93_24_220)] underline-offset-8 sm:text-left"
+        className="text-center text-2xl font-bold sm:text-left"
       >
-        Sajad Atharyan 🧑🏻‍💻
-      </motion.h1>
+        <div className="flex items-center justify-center gap-2">
+          Sajad Atharyan <IoCodeSlash className="size-7 animate-pulse" />
+        </div>
+        <div className="my-1 h-[1px] w-full bg-gradient-to-r from-transparent via-white to-transparent"></div>
+      </motion.div>
       <div className="flex items-center gap-5">
         {socials.map((social, index) => {
           const Icon = social.icon;

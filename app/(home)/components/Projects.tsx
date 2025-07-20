@@ -154,7 +154,7 @@ export default function Projects({
       <InputDetection inputType={inputType} setInputType={setInputType} />
       <section ref={projectsRef} id="projects" className="mt-5 py-10 sm:p-0">
         <Heading cyan={true}>Projects</Heading>
-        <div className="mt-20 grid grid-cols-2 gap-5 px-9 sm:grid-cols-2">
+        <div className="mt-20 grid grid-cols-1 gap-5 px-9 sm:grid-cols-2">
           {projects.map((project, index) => {
             return (
               <Link target="_blank" href={project.link} key={index}>
