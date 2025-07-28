@@ -8,7 +8,7 @@ function HiName() {
       <motion.h2
         initial={{ opacity: 1, y: 30, rotateX: 90 }}
         animate={{ opacity: 1, y: 0, rotateX: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 1.5 }}
+        transition={{ duration: 0.4, ease: "easeOut", delay: 1.2 }}
         style={{ transformStyle: "preserve-3d" }}
         className="text-4xl font-bold lg:text-7xl"
       >
@@ -17,7 +17,7 @@ function HiName() {
       <motion.h2
         initial={{ opacity: 1, y: 30, rotateX: -90 }}
         animate={{ opacity: 1, y: 0, rotateX: 0 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 1.8 }}
+        transition={{ duration: 0.5, ease: "easeOut", delay: 1.5 }}
         style={{ transformStyle: "preserve-3d" }}
         className="text-5xl font-bold underline underline-offset-8"
       >

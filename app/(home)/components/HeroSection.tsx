@@ -11,9 +11,9 @@ export default function HeroSection() {
       <div className="px-8">
         <HiName />
         <TypedText>Nice To Meet You</TypedText>
-        <FadedLine />
+        <FadedLine startFrom="left" />
         <AboutMe />
-        <FadedLine />
+        <FadedLine startFrom="right" />
         <div className="mt-6">
           <ModalOpener />
         </div>

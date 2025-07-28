@@ -2,13 +2,17 @@
 
 import { motion } from "motion/react";
 
-function FadedLine() {
+function FadedLine({ startFrom }: { startFrom: "left" | "right" }) {
   return (
     <motion.div
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ duration: 1.5, delay: 3.5 }}
-      className="h-[1px] w-full bg-gradient-to-r from-transparent via-white to-transparent"
+      initial={{ scaleX: 0 }}
+      animate={{ scaleX: 1 }}
+      transition={{ duration: 1.5, delay: 3.3 }}
+      style={{
+        originX: startFrom === "left" ? 1 : 0,
+        originY: 0.5,
+      }}
+      className={`h-[1px] w-full ${startFrom === "left" ? "bg-gradient-to-r" : "bg-gradient-to-l"} from-transparent to-white`}
     />
   );
 }
