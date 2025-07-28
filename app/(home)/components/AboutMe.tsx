@@ -86,7 +86,11 @@ export default function AboutMe() {
       </AnimatePresence>
       <p className="flex cursor-none flex-wrap gap-1">
         {words.map((word, i) => (
-          <motion.span key={i} variants={wordAnimation}>
+          <motion.span
+            key={i}
+            variants={wordAnimation}
+            className={`${word === "Front-End" ? "font-bold text-white" : ""}`}
+          >
             {word}
           </motion.span>
         ))}
