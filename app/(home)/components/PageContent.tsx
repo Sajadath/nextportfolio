@@ -60,10 +60,14 @@ function PageContent() {
     if (skillsRef.current) skillsObserver.observe(skillsRef.current);
     if (projectsRef.current) projectsObserver.observe(projectsRef.current);
 
+    const home = homeRef.current;
+    const skills = skillsRef.current;
+    const projects = projectsRef.current;
+
     return () => {
-      if (homeRef.current) homeObserver.unobserve(homeRef.current);
-      if (skillsRef.current) skillsObserver.unobserve(skillsRef.current);
-      if (projectsRef.current) projectsObserver.unobserve(projectsRef.current);
+      if (home) homeObserver.unobserve(home);
+      if (skills) skillsObserver.unobserve(skills);
+      if (projects) projectsObserver.unobserve(projects);
     };
   }, []);
 

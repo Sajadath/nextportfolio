@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { IoFingerPrintSharp } from "react-icons/io5";
+import { FaWix } from "react-icons/fa";
 import {
   SiCreatereactapp,
   SiCss3,
@@ -15,6 +16,7 @@ import {
   SiRedux,
   SiSupabase,
   SiTailwindcss,
+  SiTypescript,
   SiVite,
   SiWordpress,
 } from "react-icons/si";
@@ -23,6 +25,8 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
 import InputDetection from "./Touchscreen";
+import { TbBrandFramerMotion, TbBrandRedux } from "react-icons/tb";
+import { GrStorage } from "react-icons/gr";
 import { AnimatePresence, motion } from "motion/react";
 
 export default function Projects({
@@ -41,6 +45,21 @@ export default function Projects({
 
   const projects = [
     {
+      title: "Shopper",
+      techs: [
+        { Icon: SiNextdotjs, name: "Next JS" },
+        { Icon: SiReact, name: "React" },
+        { Icon: SiTailwindcss, name: "Tailwind CSS" },
+        { Icon: FaWix, name: "Wix" },
+        { Icon: SiTypescript, name: "TypeScript" },
+        { Icon: TbBrandFramerMotion, name: "Framer Motion" },
+        { Icon: GrStorage, name: "Zustand" },
+      ],
+      link: "https://shopper.sajadath.ir",
+      cover: "/shopper.jpg",
+      background: "bg-transparent",
+    },
+    {
       title: " Hotel Website",
       techs: [
         { Icon: SiNextdotjs, name: "Next JS" },
@@ -49,13 +68,14 @@ export default function Projects({
         { Icon: SiSupabase, name: "Supabase" },
         { Icon: IoFingerPrintSharp, name: "AuthJS" },
         { Icon: SiGoogle, name: "Google Auth" },
+        { Icon: TbBrandRedux, name: "Redux" },
       ],
-      link: "https://sajadathhotel.vercel.app",
+      link: "https://reserve.sajadath.ir",
       cover: "/wild-oasis.jpg",
       background: "bg-transparent",
     },
     {
-      title: "Old Portfolio",
+      title: "A Vanilla Portfolio",
       techs: [
         { Icon: SiHtml5, name: "HTML5" },
         { Icon: SiJavascript, name: "JavaScript" },
@@ -154,10 +174,15 @@ export default function Projects({
       <InputDetection inputType={inputType} setInputType={setInputType} />
       <section ref={projectsRef} id="projects" className="mt-5 py-10 sm:p-0">
         <Heading cyan={true}>Projects</Heading>
-        <div className="mt-20 grid grid-cols-1 gap-5 px-9 sm:grid-cols-2">
+        <div className="mx-auto mt-20 grid grid-cols-1 gap-5 px-9 md:grid-cols-2">
           {projects.map((project, index) => {
             return (
-              <Link target="_blank" href={project.link} key={index}>
+              <Link
+                target="_blank"
+                className="mx-auto"
+                href={project.link}
+                key={index}
+              >
                 <motion.div
                   initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
                   whileInView={{ opacity: 1, x: 0 }}
@@ -178,7 +203,7 @@ export default function Projects({
                       <h1 className="text-[8px] font-bold sm:text-xl md:text-2xl">
                         {project.title}
                       </h1>
-                      <div className="flex items-center gap-2 sm:gap-5">
+                      <div className="flex flex-wrap items-center gap-2 sm:gap-5">
                         {project.techs.map((tech, index) => {
                           const { Icon, name } = tech;
 
@@ -197,7 +222,7 @@ export default function Projects({
                                     index: null,
                                   })
                                 }
-                                className={`${additionalInfo.shown && additionalInfo.index == index ? "scale-125" : "scale-100"} h-3 w-3 transition-all duration-300 sm:h-5 sm:w-5 md:h-8 md:w-8`}
+                                className={`${additionalInfo.shown && additionalInfo.index == index ? "scale-125" : "scale-100"} h-4 w-4 transition-all duration-300 sm:h-5 sm:w-5 md:w-8 lg:h-8`}
                               />
                               <AnimatePresence>
                                 {additionalInfo.shown &&

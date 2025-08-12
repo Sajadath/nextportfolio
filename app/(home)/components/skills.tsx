@@ -20,6 +20,8 @@ import {
   SiTailwindcss,
   SiTypescript,
 } from "react-icons/si";
+import { GrStorage } from "react-icons/gr";
+import { TbBrandFramerMotion } from "react-icons/tb";
 
 export default function skills({
   skillsRef,
@@ -40,6 +42,8 @@ export default function skills({
       text: "TailWind",
       Icon: SiTailwindcss,
     },
+    { text: "Zustand", Icon: GrStorage },
+    { text: "Framer Motion", Icon: TbBrandFramerMotion },
     { text: "Redux", Icon: SiRedux },
     {
       text: "Supabase",
