@@ -6,6 +6,8 @@ const paragraph =
   "I am a Front-End Developer with a strong passion for creating interactive, user-friendly, and visually appealing web applications. My focus is on crafting seamless user experiences by combining modern design principles with cutting-edge technologies. I enjoy solving complex problems, learning new tools, and continuously improving my skills to deliver high-quality solutions that make a difference.";
 
 const words = paragraph.split(" ");
+const letters = words.map((word) => word.split(""));
+console.log(letters);
 
 const container = {
   hidden: {},
@@ -85,12 +87,8 @@ export default function AboutMe() {
         )}
       </AnimatePresence>
       <p className="flex cursor-none flex-wrap gap-1">
-        {words.map((word, i) => (
-          <motion.span
-            key={i}
-            variants={wordAnimation}
-            className={`${word === "Front-End" ? "font-bold text-white" : ""}`}
-          >
+        {letters.map((word, i) => (
+          <motion.span key={i} variants={wordAnimation} className={``}>
             {word}
           </motion.span>
         ))}

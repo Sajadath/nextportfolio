@@ -9,7 +9,7 @@ function ScrollForMore() {
         initial={{ opacity: 0, rotateX: 180, y: 20 }}
         animate={{ opacity: 1, rotateX: 0, y: 0 }}
         transition={{ duration: 0.6, delay: 8 }}
-        className="text-xs"
+        className="animate-bounce text-xs"
       >
         Scroll Down For More Info
       </motion.p>
