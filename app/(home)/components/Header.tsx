@@ -1,8 +1,10 @@
 "use client";
+import ThemeToggle from "@/components/ui/ThemeToggle";
 import { motion } from "motion/react";
 import Link from "next/link";
 import { IoCodeSlash } from "react-icons/io5";
 import { SiGithub, SiInstagram, SiTelegram } from "react-icons/si";
+import NavigationMenuButton from "./NavigationMenuButton";
 
 export default function Header() {
   const socials = [
@@ -22,11 +24,9 @@ export default function Header() {
       icon: SiInstagram,
     },
   ];
+
   return (
-    <header
-      id="home"
-      className="flex h-[20dvh] w-full flex-col-reverse items-center justify-center gap-4 py-10 sm:flex-row sm:justify-around sm:space-y-0"
-    >
+    <header className="flex w-full flex-col-reverse items-center justify-center gap-4 bg-white py-2 sm:flex-row sm:justify-around sm:space-y-0 sm:py-10 dark:bg-black">
       <motion.div
         initial={{ opacity: 0, scale: 1.5, y: -20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -36,7 +36,7 @@ export default function Header() {
         <div className="flex items-center justify-center gap-2">
           Sajad Atharyan <IoCodeSlash className="size-7 animate-pulse" />
         </div>
-        <div className="my-1 h-[1px] w-full bg-gradient-to-r from-transparent via-white to-transparent"></div>
+        <div className="my-1 h-[1px] w-full bg-gradient-to-r from-transparent via-black to-transparent dark:via-white"></div>
       </motion.div>
       <div className="flex items-center gap-5">
         {socials.map((social, index) => {
@@ -58,11 +58,13 @@ export default function Header() {
                   ease: "easeOut",
                 }}
               >
-                <Icon className="h-5 w-5" />
+                <Icon className="h-5 w-5 fill-black dark:fill-white" />
               </motion.div>
             </Link>
           );
         })}
+        <ThemeToggle />
+        <NavigationMenuButton />
       </div>
     </header>
   );

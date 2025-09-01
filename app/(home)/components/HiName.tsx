@@ -10,7 +10,7 @@ function HiName() {
         animate={{ opacity: 1, y: 0, rotateX: 0 }}
         transition={{ duration: 0.4, ease: "easeOut", delay: 1.2 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="text-4xl font-bold lg:text-7xl"
+        className="text-4xl font-bold text-black lg:text-7xl dark:text-white"
       >
         Hi, <br />
       </motion.h2>
@@ -19,7 +19,7 @@ function HiName() {
         animate={{ opacity: 1, y: 0, rotateX: 0 }}
         transition={{ duration: 0.5, ease: "easeOut", delay: 1.5 }}
         style={{ transformStyle: "preserve-3d" }}
-        className="text-5xl font-bold underline underline-offset-8"
+        className="text-5xl font-bold text-black underline underline-offset-8 dark:text-white"
       >
         I&apos;m Sajad
         <br />

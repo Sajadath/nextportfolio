@@ -9,6 +9,7 @@ import React, {
   useRef,
   useState,
 } from "react";
+import { createPortal } from "react-dom";
 
 interface ModalContextType {
   open: boolean;
@@ -54,11 +55,11 @@ export const ModalTrigger = ({
       transition={{ duration: 0.8, delay: 5.7, ease: "easeOut" }}
     >
       <button
+        onClick={() => setOpen(true)}
         className={cn(
-          "syledButton mx-auto block w-fit font-semibold text-black hover:text-white sm:mx-0",
+          "syledButton mx-auto block border border-gray-500 font-semibold text-black hover:text-white sm:mx-0 dark:border-none",
           className,
         )}
-        onClick={() => setOpen(true)}
       >
         {children}
       </button>
@@ -73,7 +74,7 @@ export const ModalBody = ({
   children: ReactNode;
   className?: string;
 }) => {
-  const { open, setOpen } = useModal(); // Combined `useModal` calls
+  const { open, setOpen } = useModal();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "auto";
@@ -82,11 +83,12 @@ export const ModalBody = ({
     };
   }, [open]);
 
-  const modalRef = useRef<HTMLDivElement | null>(null); // No changes needed here
+  const modalRef = useRef<HTMLDivElement | null>(null);
   useOutsideClick(modalRef, () => setOpen(false));
 
   return (
-    open && ( // Conditional rendering for AnimatePresence
+    open &&
+    createPortal(
       <AnimatePresence>
         <motion.div
           initial={{
@@ -109,7 +111,7 @@ export const ModalBody = ({
           <motion.div
             ref={modalRef}
             className={cn(
-              "relative z-50 mx-3 flex max-h-[90%] min-h-[10%] max-w-fit flex-1 flex-col overflow-hidden border border-transparent bg-white md:rounded-2xl dark:border-neutral-800 dark:bg-neutral-900/90",
+              "relative z-50 mx-3 flex max-h-[90%] min-h-[10%] max-w-fit flex-1 flex-col overflow-hidden border border-gray-100 bg-white shadow-md md:rounded-2xl dark:border-neutral-800 dark:bg-neutral-900/90",
               className,
             )}
             initial={{
@@ -139,7 +141,8 @@ export const ModalBody = ({
             {children}
           </motion.div>
         </motion.div>
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body,
     )
   );
 };
@@ -191,7 +194,7 @@ const Overlay = ({ className }: { className?: string }) => {
         opacity: 0,
         backdropFilter: "blur(0px)",
       }}
-      className={`bg-opacity-50 fixed inset-0 z-50 h-full w-full bg-black ${className}`}
+      className={`fixed inset-0 z-50 h-full w-full bg-white/50 dark:bg-black/50 ${className}`}
     ></motion.div>
   );
 };

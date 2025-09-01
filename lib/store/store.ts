@@ -1,12 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import inputReducer from "@/lib/slices/inputSlice";
+import menuReducer from "@/lib/slices/menuSlice";
+import homePageReducer from "@/lib/slices/homePageSlice";
+export const makeStore = () => {
+  return configureStore({
+    reducer: { menu: menuReducer, homePage: homePageReducer },
+  });
+};
 
-const store = configureStore({
-  reducer: {
-    input: inputReducer,
-  },
-});
-
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
-export default store;
+export type AppStore = ReturnType<typeof makeStore>;
+export type RootState = ReturnType<AppStore["getState"]>;
+export type AppDispatch = AppStore["dispatch"];

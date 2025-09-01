@@ -4,7 +4,7 @@ import { motion } from "motion/react";
 
 function ScrollForMore() {
   return (
-    <div className="flex flex-col items-center justify-center gap-3 py-3">
+    <div className="flex flex-col items-center justify-center gap-3 py-3 text-black dark:text-white">
       <motion.p
         initial={{ opacity: 0, rotateX: 180, y: 20 }}
         animate={{ opacity: 1, rotateX: 0, y: 0 }}

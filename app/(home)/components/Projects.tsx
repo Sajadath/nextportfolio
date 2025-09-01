@@ -1,39 +1,15 @@
 "use client";
 import React, { useState } from "react";
-import { IoFingerPrintSharp } from "react-icons/io5";
-import { FaWix } from "react-icons/fa";
-import {
-  SiCreatereactapp,
-  SiCss3,
-  SiCssmodules,
-  SiGoogle,
-  SiHtml5,
-  SiJavascript,
-  SiLeaflet,
-  SiNextdotjs,
-  SiReact,
-  SiReactrouter,
-  SiRedux,
-  SiSupabase,
-  SiTailwindcss,
-  SiTypescript,
-  SiVite,
-  SiWordpress,
-} from "react-icons/si";
-import Heading from "./Heading";
-import Link from "next/link";
-import { cn } from "@/lib/utils";
-import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
-import InputDetection from "./Touchscreen";
-import { TbBrandFramerMotion, TbBrandRedux } from "react-icons/tb";
-import { GrStorage } from "react-icons/gr";
-import { AnimatePresence, motion } from "motion/react";
 
-export default function Projects({
-  projectsRef,
-}: {
-  projectsRef: React.RefObject<HTMLElement | null>;
-}) {
+import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
+import { cn } from "@/lib/utils";
+import { AnimatePresence, motion } from "motion/react";
+import Link from "next/link";
+import Heading from "./Heading";
+import InputDetection from "./Touchscreen";
+import { projects } from "@/data/projectsData";
+
+export default function Projects() {
   const [inputType, setInputType] = useState("mouse");
   const [additionalInfo, setAdditionalInfo] = useState<{
     shown: boolean;
@@ -43,136 +19,13 @@ export default function Projects({
     index: null,
   });
 
-  const projects = [
-    {
-      title: "Shopper",
-      techs: [
-        { Icon: SiNextdotjs, name: "Next JS" },
-        { Icon: SiReact, name: "React" },
-        { Icon: SiTailwindcss, name: "Tailwind CSS" },
-        { Icon: FaWix, name: "Wix" },
-        { Icon: SiTypescript, name: "TypeScript" },
-        { Icon: TbBrandFramerMotion, name: "Framer Motion" },
-        { Icon: GrStorage, name: "Zustand" },
-      ],
-      link: "https://shopper.sajadath.ir",
-      cover: "/shopper.jpg",
-      background: "bg-transparent",
-    },
-    {
-      title: " Hotel Website",
-      techs: [
-        { Icon: SiNextdotjs, name: "Next JS" },
-        { Icon: SiReact, name: "React" },
-        { Icon: SiTailwindcss, name: "Tailwind CSS" },
-        { Icon: SiSupabase, name: "Supabase" },
-        { Icon: IoFingerPrintSharp, name: "AuthJS" },
-        { Icon: SiGoogle, name: "Google Auth" },
-        { Icon: TbBrandRedux, name: "Redux" },
-      ],
-      link: "https://reserve.sajadath.ir",
-      cover: "/wild-oasis.jpg",
-      background: "bg-transparent",
-    },
-    {
-      title: "A Vanilla Portfolio",
-      techs: [
-        { Icon: SiHtml5, name: "HTML5" },
-        { Icon: SiJavascript, name: "JavaScript" },
-        { Icon: SiCss3, name: "CSS3" },
-      ],
-      link: "https://sajadath.github.io/portfolio/",
-      cover: "/old-portfolio.jpg",
-      background: "bg-transparent",
-    },
-    {
-      title: "SadrTell Demo Website",
-      techs: [
-        { Icon: SiReact, name: "React" },
-        { Icon: SiVite, name: "Vite" },
-        { Icon: SiTailwindcss, name: "Tailwind CSS" },
-        { Icon: SiReactrouter, name: "React Router" },
-        { Icon: SiRedux, name: "Redux" },
-      ],
-      link: "https://sadrtell.vercel.app",
-      cover: "/demo-sadrtell.jpg",
-      background: "bg-transparent",
-    },
-    {
-      title: "Fast Pizza Order",
-      techs: [
-        { Icon: SiReact, name: "React" },
-        { Icon: SiTailwindcss, name: "Tailwind CSS" },
-        { Icon: SiVite, name: "Vite" },
-        { Icon: SiRedux, name: "Redux" },
-      ],
-      link: "https://fastpizzasajadath.vercel.app/",
-      cover: "/fastPizza.jpg",
-      background: "bg-transparent",
-    },
-    {
-      title: "Official SadrTell Website",
-      techs: [
-        { Icon: SiReact, name: "React" },
-        { Icon: SiCss3, name: "CSS3" },
-        { Icon: SiCssmodules, name: "CSS Modules" },
-        { Icon: SiWordpress, name: "WordPress" },
-        { Icon: SiVite, name: "Vite" },
-      ],
-      link: "https://sadrtell.ir",
-      cover: "/sadrtell.jpg",
-      background: "bg-transparent",
-    },
-    {
-      title: "usePopCorn Website",
-      techs: [
-        { Icon: SiReact, name: "React" },
-        { Icon: SiCss3, name: "CSS3" },
-        { Icon: SiCreatereactapp, name: "Create React App" },
-      ],
-      link: "https://usepopcorn-beta-three.vercel.app/",
-      cover: "/usepopcorn.jpg",
-      background: "bg-transparent",
-    },
-    {
-      title: "Small React Quiz App",
-      techs: [
-        { Icon: SiReact, name: "React" },
-        { Icon: SiCss3, name: "CSS3" },
-        { Icon: SiCreatereactapp, name: "Create React App" },
-      ],
-      link: "https://reactquiz-nine.vercel.app/",
-      cover: "/react-small-quiz.jpg",
-      background: "bg-transparent",
-    },
-    {
-      title: "Small TodoList App",
-      techs: [
-        { Icon: SiReact, name: "React" },
-        { Icon: SiCss3, name: "CSS3" },
-        { Icon: SiCreatereactapp, name: "Create React App" },
-      ],
-      link: "https://todolist-zeta-eosin.vercel.app/",
-      cover: "/todolist.jpg",
-      background: "bg-transparent",
-    },
-    {
-      title: "Trip Location , WorldWise",
-      techs: [
-        { Icon: SiReact, name: "React" },
-        { Icon: SiVite, name: "Vite" },
-        { Icon: SiCssmodules, name: "CSS Modules" },
-        { Icon: SiLeaflet, name: "Leaflet" },
-      ],
-      link: "https://github.com/Sajadath/worldwise/tree/master",
-      cover: "/worldwise.jpg",
-      background: "bg-transparent",
-    },
-  ];
   return (
     <>
       <InputDetection inputType={inputType} setInputType={setInputType} />
-      <section ref={projectsRef} id="projects" className="mt-5 py-10 sm:p-0">
+      <section
+        id="projects"
+        className="mt-5 max-w-full overflow-x-hidden py-10 sm:p-0"
+      >
         <Heading cyan={true}>Projects</Heading>
         <div className="mx-auto mt-20 grid grid-cols-1 gap-5 px-9 md:grid-cols-2">
           {projects.map((project, index) => {
@@ -199,11 +52,11 @@ export default function Projects({
                     imageUrl={project.cover}
                     inputType={inputType}
                   >
-                    <div className="w-fit space-y-1 rounded-lg bg-black/50 p-1 sm:space-y-5 sm:p-4">
-                      <h1 className="text-[8px] font-bold sm:text-xl md:text-2xl">
+                    <div className="w-fit space-y-1 rounded-lg bg-white/80 p-1 shadow-md sm:space-y-5 sm:p-4 dark:bg-black/50">
+                      <h1 className="text-[8px] font-bold text-black sm:text-xl md:text-2xl dark:text-white">
                         {project.title}
                       </h1>
-                      <div className="flex flex-wrap items-center gap-2 sm:gap-5">
+                      <div className="flex flex-wrap items-center gap-2 text-black sm:gap-5 dark:text-white">
                         {project.techs.map((tech, index) => {
                           const { Icon, name } = tech;
 
@@ -231,7 +84,7 @@ export default function Projects({
                                     initial={{ opacity: 0, y: -10 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -10 }}
-                                    className={`absolute bottom-[120%] left-1/2 -translate-x-1/2 rounded-lg bg-black px-2 py-1 text-lg text-nowrap`}
+                                    className={`absolute bottom-[120%] left-1/2 -translate-x-1/2 rounded-lg bg-white px-2 py-1 text-lg text-nowrap shadow-md dark:bg-black`}
                                   >
                                     {name}
                                   </motion.h3>

@@ -1,6 +1,10 @@
+import { ThemeProvider } from "@/components/theme-provider";
+import ReduxProvider from "@/components/ui/ReduxProvider";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
-import { ThemeProvider } from "@/components/theme-provider";
+import HeaderProvider from "./(home)/components/HeaderProvider";
+import NavigationMenu from "./(home)/components/NavigationMenu";
+import TransitionEffect from "./(home)/components/TransitionEffect";
 import "./globals.css";
 
 const spaceGrotesk = Space_Grotesk({
@@ -54,14 +58,21 @@ export default function RootLayout({
         <meta name="theme-color" content="#000000" />
       </head>
       <body className={`${spaceGrotesk.className} relative antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem
-          disableTransitionOnChange
-        >
-          {children}
-        </ThemeProvider>
+        <ReduxProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="dark"
+            enableSystem
+            disableTransitionOnChange
+          >
+            <div className="flex h-dvh w-screen flex-col bg-white dark:bg-black">
+              <HeaderProvider />
+              <div className="grow overflow-y-scroll">{children}</div>
+            </div>
+          </ThemeProvider>
+          <NavigationMenu />
+          <TransitionEffect />
+        </ReduxProvider>
       </body>
     </html>
   );

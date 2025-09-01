@@ -7,7 +7,6 @@ const paragraph =
 
 const words = paragraph.split(" ");
 const letters = words.map((word) => word.split(""));
-console.log(letters);
 
 const container = {
   hidden: {},
@@ -60,7 +59,7 @@ export default function AboutMe() {
 
   return (
     <motion.div
-      className="relative cursor-none overflow-hidden py-5 pr-0 text-xs text-neutral-200"
+      className="relative cursor-none overflow-hidden py-5 pr-0 text-xs text-neutral-700 dark:text-neutral-200"
       variants={container}
       initial="hidden"
       animate="visible"

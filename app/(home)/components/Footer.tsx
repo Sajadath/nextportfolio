@@ -1,7 +1,7 @@
 import localFont from "next/font/local";
 import FooterText from "./FooterText";
 const customFont = localFont({
-  src: "../../fonts/JustAnotherHand-Regular.ttf",
+  src: "../../../fonts/JustAnotherHand-Regular.ttf",
   display: "swap",
 });
 export default function Footer() {

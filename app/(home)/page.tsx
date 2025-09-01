@@ -1,24 +1,34 @@
 "use client";
-import { useEffect, useState } from "react";
-import Welcoming from "./components/Welcoming";
-import PageContent from "./components/PageContent";
+import { useAppDispatch, useAppSelector } from "@/lib/hooks/reduxHooks";
+import { setMountedTime } from "@/lib/slices/homePageSlice";
 import { AnimatePresence } from "motion/react";
+import { useEffect, useState } from "react";
+import PageContent from "./components/PageContent";
+import Welcoming from "./components/Welcoming";
 
 export default function Page() {
-  const [welcomeEnds, setWelcomeEnds] = useState(false);
+  const [showWelcome, setShowWelcome] = useState(false);
+  const mountedTime = useAppSelector((state) => state.homePage.mountedTime);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setWelcomeEnds(true);
-    }, 3000);
+    if (mountedTime === 0) {
+      setShowWelcome(true);
+      const timer = setTimeout(() => {
+        setShowWelcome(false);
+        dispatch(setMountedTime(1));
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [dispatch, mountedTime]);
 
-    return () => clearTimeout(timer);
-  }, []);
   return (
-    <div className="bg-black">
-      <AnimatePresence>{!welcomeEnds && <Welcoming />}</AnimatePresence>
+    <>
+      <AnimatePresence mode="wait">
+        {showWelcome && <Welcoming key="welcome" />}
+      </AnimatePresence>
 
-      {welcomeEnds && <PageContent />}
-    </div>
+      {!showWelcome && <PageContent />}
+    </>
   );
 }

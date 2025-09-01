@@ -26,7 +26,7 @@ function Welcoming() {
         }}
         className="flex h-full w-full items-center justify-center bg-[#00ff88]"
       ></motion.div>
-      <div className="absolute top-0 right-0 z-150 flex h-full w-full items-center justify-center gap-4 text-black">
+      <div className="fixed top-1/2 left-1/2 z-150 flex h-full w-full -translate-x-1/2 -translate-y-1/2 items-center justify-center gap-4 text-black">
         <motion.div
           initial={{ scale: 0, originY: 1 }}
           animate={{ scale: 1, originY: 1 }}

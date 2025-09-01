@@ -38,7 +38,7 @@ const InputDetection = ({ inputType, setInputType }: InputDetectionProps) => {
       window.removeEventListener("mousemove", updateInputType);
       window.removeEventListener("touchstart", updateInputType);
     };
-  }, [inputType]);
+  }, [inputType, setInputType]);
 
   return null;
 };
