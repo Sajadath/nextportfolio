@@ -15,7 +15,7 @@ function AlreadyInThePageLine() {
         style={{
           transformOrigin: "right center",
         }}
-        className="group-hover:bg-mainGreen absolute top-full right-[70%] left-0 block h-0.5 rounded-3xl bg-white transition-colors duration-300"
+        className="group-hover:bg-mainGreen absolute top-full right-[70%] left-0 block h-0.5 rounded-3xl bg-black transition-colors duration-300 dark:bg-white"
       />
       <motion.span
         initial={{ scaleY: 0 }}
@@ -27,7 +27,7 @@ function AlreadyInThePageLine() {
         style={{
           transformOrigin: "bottom center",
         }}
-        className="group-hover:bg-mainGreen absolute top-1/2 bottom-0 left-0 block w-0.5 rounded-3xl bg-white transition-colors duration-300"
+        className="group-hover:bg-mainGreen absolute top-1/2 bottom-0 left-0 block w-0.5 rounded-3xl bg-black transition-colors duration-300 dark:bg-white"
       />
       {/* top right */}
       <motion.span
@@ -39,7 +39,7 @@ function AlreadyInThePageLine() {
         style={{
           transformOrigin: "left center",
         }}
-        className="group-hover:bg-mainGreen absolute right-0 bottom-full left-[70%] block h-0.5 rounded-3xl bg-white transition-colors duration-300"
+        className="group-hover:bg-mainGreen absolute right-0 bottom-full left-[70%] block h-0.5 rounded-3xl bg-black transition-colors duration-300 dark:bg-white"
       />
       <motion.span
         initial={{ scaleY: 0 }}
@@ -51,7 +51,7 @@ function AlreadyInThePageLine() {
         style={{
           transformOrigin: "top center",
         }}
-        className="group-hover:bg-mainGreen absolute top-0 right-0 bottom-1/2 block w-0.5 rounded-3xl bg-white transition-colors duration-300"
+        className="group-hover:bg-mainGreen absolute top-0 right-0 bottom-1/2 block w-0.5 rounded-3xl bg-black transition-colors duration-300 dark:bg-white"
       />
     </>
   );
