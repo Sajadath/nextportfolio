@@ -4,6 +4,7 @@ import { closeMenu, setIsInTransition } from "@/lib/slices/menuSlice";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { useState } from "react";
+import AlreadyInThePageLine from "./AlreadyInThePageLine";
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -37,7 +38,7 @@ export const TransitionLink = ({
   return (
     <div>
       <Link
-        className={`${pathName === href ? "cursor-not-allowed font-bold" : ""} hover:text-mainGreen relative border-black transition-all duration-300 dark:border-white`}
+        className={`${pathName === href ? "cursor-not-allowed font-bold" : ""} group hover:text-mainGreen relative border-black transition-all duration-300 dark:border-white`}
         onClick={handleLinkClick}
         href={href}
         {...props}
@@ -45,9 +46,14 @@ export const TransitionLink = ({
         onMouseLeave={() => setIsHovered(false)}
       >
         <span
-          className={`inline-block text-center transition-all duration-300 ${pathName === href && "text-5xl"} ${isHovered ? "translate-x-6" : ""}`}
+          className={`relative inline-block px-3 text-center transition-all duration-300 ${pathName === href && "text-5xl"} ${isHovered ? "translate-x-6" : ""}`}
         >
           {children}
+          {pathName === href && (
+            <>
+              <AlreadyInThePageLine />
+            </>
+          )}
         </span>
       </Link>
     </div>

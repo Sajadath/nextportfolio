@@ -3,6 +3,7 @@ import FadedLine from "./FadedLine";
 import HiName from "./HiName";
 import ModalOpener from "./ModalOpener";
 import TypedText from "./TypedText";
+import ViewMoreButton from "./ViewMoreButton";
 
 export default function HeroSection() {
   return (
@@ -13,8 +14,9 @@ export default function HeroSection() {
         <FadedLine startFrom="left" />
         <AboutMe />
         <FadedLine startFrom="right" />
-        <div className="mt-6">
+        <div className="mx-auto mt-6 flex w-fit items-center gap-4">
           <ModalOpener />
+          <ViewMoreButton />
         </div>
       </div>
     </>
