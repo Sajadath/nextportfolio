@@ -23,6 +23,20 @@ import { TbBrandFramerMotion, TbBrandRedux } from "react-icons/tb";
 
 export const projects = [
   {
+    title: "To-Do Manager",
+    techs: [
+      { Icon: SiNextdotjs, name: "Next JS" },
+      { Icon: SiReact, name: "React" },
+      { Icon: SiTailwindcss, name: "Tailwind CSS" },
+      { Icon: SiTypescript, name: "TypeScript" },
+      { Icon: TbBrandFramerMotion, name: "Framer Motion" },
+      { Icon: GrStorage, name: "Zustand" },
+    ],
+    link: "https://todo.sajadath.ir",
+    cover: "/todoWebsite.jpg",
+    background: "bg-transparent",
+  },
+  {
     title: "Shopper",
     techs: [
       { Icon: SiNextdotjs, name: "Next JS" },
