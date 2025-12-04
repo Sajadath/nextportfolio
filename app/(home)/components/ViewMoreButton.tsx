@@ -10,6 +10,7 @@ function ViewMoreButton() {
   const [beingHovered, setBeingHovered] = useState(false);
   const links = useMemo(
     () => [
+      { href: "/", label: "Home" },
       { href: "/skills", label: "Skills" },
       { href: "/projects", label: "Projects" },
     ],
