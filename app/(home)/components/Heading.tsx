@@ -9,32 +9,19 @@ export default function Heading({
   children: React.ReactNode;
   cyan?: boolean;
 }) {
-  if (!cyan)
-    return (
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, ease: "linear", delay: 0 }}
-        className="max-w-full overflow-x-hidden"
+  return (
+    <motion.h2
+      initial={{ opacity: 0, y: -20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.8, ease: "linear", delay: 0 }}
+      className="max-w-full overflow-x-hidden"
+    >
+      <div
+        className={`${cyan ? "styledHeadingCyan" : "styledHeading"} mx-auto w-fit select-none`}
       >
-        <div className="styledHeading mx-auto w-fit select-none">
-          {children}
-        </div>
-      </motion.h2>
-    );
-  if (cyan)
-    return (
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.2 }}
-        transition={{ duration: 0.8, ease: "linear", delay: 0 }}
-        className="max-w-full overflow-x-hidden"
-      >
-        <div className="styledHeadingCyan mx-auto w-fit select-none">
-          {children}
-        </div>
-      </motion.h2>
-    );
+        {children}
+      </div>
+    </motion.h2>
+  );
 }

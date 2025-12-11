@@ -439,8 +439,4 @@ html {
   ::-webkit-scrollbar-thumb:hover {
     background: rgb(185, 185, 185);
   }
-
-  ::-webkit-scrollbar-track {
-    background: black;
-  }
 }

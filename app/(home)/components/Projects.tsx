@@ -22,12 +22,9 @@ export default function Projects() {
   return (
     <>
       <InputDetection inputType={inputType} setInputType={setInputType} />
-      <section
-        id="projects"
-        className="mt-5 max-w-full overflow-x-hidden py-10 sm:p-0"
-      >
+      <section id="projects" className="max-w-full overflow-x-hidden">
         <Heading cyan={true}>Projects</Heading>
-        <div className="mx-auto mt-20 grid grid-cols-1 gap-5 px-9 md:grid-cols-2">
+        <div className="mx-auto mt-10 grid grid-cols-1 gap-5 px-9 md:grid-cols-2">
           {projects.map((project, index) => {
             return (
               <Link
