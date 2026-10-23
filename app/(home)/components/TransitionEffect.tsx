@@ -5,7 +5,6 @@ import { AnimatePresence, motion } from "motion/react";
 
 function TransitionEffect() {
   const isInTransition = useAppSelector((state) => state.menu.isInTransition);
-  console.log(isInTransition);
 
   return (
     <AnimatePresence mode="wait">

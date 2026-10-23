@@ -18,7 +18,8 @@ export default function ThemeToggle() {
     <motion.div
       initial={{ y: -30 }}
       animate={{ y: 0 }}
-      className="rotate relative flex items-center justify-center gap-1 overflow-hidden rounded-xl shadow-md shadow-[#0000001a] dark:shadow-[#1b1b1b]"
+      transition={{ delay: 0.4, duration: 0.8, ease: "easeOut" }}
+      className="rotate relative flex items-center justify-center gap-1 overflow-hidden rounded-full shadow-md shadow-[#0000001a] dark:shadow-[#1b1b1b]"
     >
       <button
         onClick={() => {
@@ -32,7 +33,7 @@ export default function ThemeToggle() {
         {theme === "dark" && (
           <motion.div
             layoutId="theme-toggle"
-            className="absolute top-1/2 left-1/2 h-[calc(100%-0.5rem)] w-[calc(100%-0.5rem)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-400"
+            className="absolute top-0 right-0 bottom-0 left-0 rounded-l-full bg-green-400 blur-xs"
           />
         )}
       </button>
@@ -48,7 +49,7 @@ export default function ThemeToggle() {
         {theme === "light" && (
           <motion.div
             layoutId="theme-toggle"
-            className="absolute top-1/2 left-1/2 h-[calc(100%-0.5rem)] w-[calc(100%-0.5rem)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-green-400"
+            className="absolute top-0 right-0 bottom-0 left-0 rounded-r-full bg-green-400 blur-xs"
           />
         )}
       </button>

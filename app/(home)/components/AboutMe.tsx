@@ -81,7 +81,7 @@ export default function AboutMe() {
               left: mousePosition.x,
               top: mousePosition.y,
             }}
-            className={`pointer-events-none fixed z-100 h-[75px] w-[75px] translate-x-[-50%] translate-y-[-50%] rounded-full bg-white mix-blend-difference`}
+            className={`pointer-events-none fixed z-100 h-[75px] w-[75px] translate-x-[-50%] translate-y-[-50%] rounded-full border border-white opacity-90 shadow-[0px_0px_25px_10px_#00000086,inset_0px_0px_10px_5px_#ffffffbc] backdrop-invert-100 dark:border-black/20 dark:shadow-[0px_0px_20px_3px_#ffffffd3,inset_0px_0px_15px_5px_#0000005e]`}
           />
         )}
       </AnimatePresence>

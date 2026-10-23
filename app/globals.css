@@ -159,10 +159,7 @@ html {
     position: relative;
   }
 
-  .writingAnimation::after {
-    content: "|";
-    position: absolute;
-    right: 0;
+  .blinkAnimation {
     animation: blink 0.7s step-end infinite;
   }
 

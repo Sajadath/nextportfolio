@@ -26,7 +26,7 @@ export default function Header() {
   ];
 
   return (
-    <header className="flex w-full flex-col-reverse items-center justify-center gap-4 bg-white py-2 sm:flex-row sm:justify-around sm:space-y-0 sm:py-10 dark:bg-black">
+    <header className="flex w-full flex-col items-center justify-center gap-4 bg-white py-4 sm:flex-row sm:justify-around sm:space-y-0 sm:py-10 dark:bg-black">
       <motion.div
         initial={{ opacity: 0, scale: 1.5, y: -20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
