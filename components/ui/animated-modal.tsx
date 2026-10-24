@@ -1,6 +1,7 @@
 "use client";
 import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "framer-motion"; // Fixed import
+import { useLenis } from "lenis/react";
+import { AnimatePresence, motion } from "motion/react";
 import React, {
   ReactNode,
   createContext,
@@ -49,21 +50,15 @@ export const ModalTrigger = ({
 }) => {
   const { setOpen } = useModal();
   return (
-    <motion.div
-      initial={{ opacity: 0, x: -90 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 5.7, ease: "easeOut" }}
+    <button
+      onClick={() => setOpen(true)}
+      className={cn(
+        "syledButton mx-auto block border border-gray-500 font-semibold text-black hover:text-white sm:mx-0 dark:border-none",
+        className,
+      )}
     >
-      <button
-        onClick={() => setOpen(true)}
-        className={cn(
-          "syledButton mx-auto block border border-gray-500 font-semibold text-black hover:text-white sm:mx-0 dark:border-none",
-          className,
-        )}
-      >
-        {children}
-      </button>
-    </motion.div>
+      {children}
+    </button>
   );
 };
 
@@ -75,13 +70,17 @@ export const ModalBody = ({
   className?: string;
 }) => {
   const { open, setOpen } = useModal();
+  const lenis = useLenis();
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "auto";
+    if (open) lenis?.stop();
+    else lenis?.start();
     return () => {
       document.body.style.overflow = "auto"; // Cleanup on unmount
+      lenis?.start();
     };
-  }, [open]);
+  }, [open, lenis]);
 
   const modalRef = useRef<HTMLDivElement | null>(null);
   useOutsideClick(modalRef, () => setOpen(false));

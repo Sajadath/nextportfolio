@@ -1,10 +1,20 @@
+import AboutSection from "./AboutSection";
+import ContactSection from "./ContactSection";
 import HeroSection from "./HeroSection";
+import SkillsShowcase from "./SkillsShowcase";
+import TechMarquee from "./TechMarquee";
+import WorkShowcase from "./WorkShowcase";
 
 function PageContent() {
   return (
-    <div className="mx-auto flex h-full max-w-7xl items-center justify-center bg-white dark:bg-black">
+    <>
       <HeroSection />
-    </div>
+      <TechMarquee />
+      <AboutSection />
+      <SkillsShowcase />
+      <WorkShowcase />
+      <ContactSection />
+    </>
   );
 }
 

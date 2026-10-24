@@ -1,104 +1,91 @@
 "use client";
-import React, { useState } from "react";
-
-import { DirectionAwareHover } from "@/components/ui/direction-aware-hover";
-import { cn } from "@/lib/utils";
-import { AnimatePresence, motion } from "motion/react";
-import Link from "next/link";
-import Heading from "./Heading";
-import InputDetection from "./Touchscreen";
+import ProjectCard from "@/components/ui/ProjectCard";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { projects } from "@/data/projectsData";
+import { AnimatePresence, motion } from "motion/react";
+import { useMemo, useState } from "react";
+
+const filters = [
+  "All",
+  "Next JS",
+  "React",
+  "TypeScript",
+  "Tailwind CSS",
+  "Redux",
+  "Supabase",
+];
 
 export default function Projects() {
-  const [inputType, setInputType] = useState("mouse");
-  const [additionalInfo, setAdditionalInfo] = useState<{
-    shown: boolean;
-    index: number | null;
-  }>({
-    shown: true,
-    index: null,
-  });
+  const [active, setActive] = useState("All");
+
+  const visible = useMemo(
+    () =>
+      active === "All"
+        ? projects
+        : projects.filter((p) => p.techs.some((t) => t.name === active)),
+    [active],
+  );
 
   return (
-    <>
-      <InputDetection inputType={inputType} setInputType={setInputType} />
-      <section id="projects" className="max-w-full overflow-x-hidden">
-        <Heading cyan={true}>Projects</Heading>
-        <div className="mx-auto mt-10 grid grid-cols-1 gap-5 px-9 md:grid-cols-2">
-          {projects.map((project, index) => {
-            return (
-              <Link
-                target="_blank"
-                className="mx-auto"
-                href={project.link}
-                key={index}
-              >
-                <motion.div
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true, amount: 0.2 }}
-                  transition={{
-                    duration: 0.8,
-                    ease: "easeOut",
-                    delay: 0.2 * index,
-                  }}
-                  className={`${cn("p-[1px]", project.background)} rounded-lg`}
-                >
-                  <DirectionAwareHover
-                    className="w-full cursor-pointer space-y-5"
-                    imageUrl={project.cover}
-                    inputType={inputType}
-                  >
-                    <div className="w-fit space-y-1 rounded-lg bg-white/80 p-1 shadow-md sm:space-y-5 sm:p-4 dark:bg-black/50">
-                      <h1 className="text-[8px] font-bold text-black sm:text-xl md:text-2xl dark:text-white">
-                        {project.title}
-                      </h1>
-                      <div className="flex flex-wrap items-center gap-2 text-black sm:gap-5 dark:text-white">
-                        {project.techs.map((tech, index) => {
-                          const { Icon, name } = tech;
+    <section id="projects" className="mx-auto max-w-7xl px-6 sm:px-10">
+      <SectionHeading
+        index="//"
+        eyebrow="All projects"
+        title="Selected"
+        accent="projects."
+        description="From production websites to small experiments — a collection of things I've designed and built. Filter by technology to explore."
+      />
 
-                          return (
-                            <div key={index} className="relative h-fit w-fit">
-                              <Icon
-                                onMouseEnter={() =>
-                                  setAdditionalInfo({
-                                    shown: true,
-                                    index: index,
-                                  })
-                                }
-                                onMouseLeave={() =>
-                                  setAdditionalInfo({
-                                    shown: false,
-                                    index: null,
-                                  })
-                                }
-                                className={`${additionalInfo.shown && additionalInfo.index == index ? "scale-125" : "scale-100"} h-4 w-4 transition-all duration-300 sm:h-5 sm:w-5 md:w-8 lg:h-8`}
-                              />
-                              <AnimatePresence>
-                                {additionalInfo.shown &&
-                                index == additionalInfo.index ? (
-                                  <motion.h3
-                                    initial={{ opacity: 0, y: -10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    className={`absolute bottom-[120%] left-1/2 -translate-x-1/2 rounded-lg bg-white px-2 py-1 text-lg text-nowrap shadow-md dark:bg-black`}
-                                  >
-                                    {name}
-                                  </motion.h3>
-                                ) : null}
-                              </AnimatePresence>
-                            </div>
-                          );
-                        })}
-                      </div>
-                    </div>
-                  </DirectionAwareHover>
-                </motion.div>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-    </>
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.4 }}
+        className="mb-10 flex flex-wrap gap-2"
+      >
+        {filters.map((filter) => (
+          <button
+            key={filter}
+            onClick={() => setActive(filter)}
+            className={`relative cursor-pointer rounded-full border px-4 py-2 text-sm font-medium transition-colors duration-300 ${
+              active === filter
+                ? "border-transparent text-black"
+                : "border-black/10 text-neutral-600 hover:border-black/40 dark:border-white/10 dark:text-neutral-400 dark:hover:border-white/40"
+            }`}
+          >
+            {active === filter && (
+              <motion.span
+                layoutId="project-filter"
+                className="bg-mainGreen absolute inset-0 rounded-full"
+                transition={{ type: "spring", stiffness: 350, damping: 30 }}
+              />
+            )}
+            <span className="relative">{filter}</span>
+          </button>
+        ))}
+      </motion.div>
+
+      <motion.div
+        layout
+        className="grid grid-cols-1 gap-8 pb-20 md:grid-cols-2"
+      >
+        <AnimatePresence mode="popLayout">
+          {visible.map((project) => (
+            <motion.div
+              layout
+              key={project.link}
+              initial={{ opacity: 0, y: 60, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9, transition: { duration: 0.25 } }}
+              transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            >
+              <ProjectCard
+                project={project}
+                index={projects.indexOf(project)}
+              />
+            </motion.div>
+          ))}
+        </AnimatePresence>
+      </motion.div>
+    </section>
   );
 }

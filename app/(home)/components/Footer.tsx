@@ -6,8 +6,8 @@ const customFont = localFont({
 });
 export default function Footer() {
   return (
-    <footer className={`mt-10 text-center text-3xl ${customFont.className}`}>
-      <FooterText />
+    <footer className="relative border-t border-black/5 px-6 pt-10 pb-6 sm:px-10 dark:border-white/5">
+      <FooterText handwritingClassName={customFont.className} />
     </footer>
   );
 }

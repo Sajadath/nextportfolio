@@ -5,30 +5,31 @@ import {
   ModalContent,
   ModalTrigger,
 } from "@/components/ui/animated-modal";
-import SocialButtons from "./SocialButtons";
-import { SiGithub, SiTelegram } from "react-icons/si";
+import { ReactNode } from "react";
 import { BiLogoGmail } from "react-icons/bi";
 import { LuInstagram } from "react-icons/lu";
-import { motion } from "motion/react";
+import { SiGithub, SiTelegram } from "react-icons/si";
+import SocialButtons from "./SocialButtons";
 
-export default function ModalOpener() {
+export default function ModalOpener({
+  children = "Contact Me",
+  className,
+}: {
+  children?: ReactNode;
+  className?: string;
+}) {
   return (
     <Modal>
       {/* Trigger Button */}
-      <ModalTrigger>
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 6.6, duration: 0.4, ease: "easeOut" }}
-        >
-          Contact Me
-        </motion.div>
-      </ModalTrigger>
+      <ModalTrigger className={className}>{children}</ModalTrigger>
 
       {/* Modal Body */}
       <ModalBody>
         <ModalContent className="w-fit">
-          <h1 className="mb-7 text-xl font-bold">Contact Informations</h1>
+          <h1 className="mb-2 text-xl font-bold">Contact Informations</h1>
+          <p className="mb-7 text-sm text-neutral-500">
+            Pick your favourite channel, I usually reply within a day.
+          </p>
           <div className="group">
             <div className="ml-1">
               <SocialButtons
@@ -73,8 +74,6 @@ export default function ModalOpener() {
             </div>
           </div>
         </ModalContent>
-
-        {/* Modal Footer */}
       </ModalBody>
     </Modal>
   );

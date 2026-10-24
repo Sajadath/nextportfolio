@@ -1,18 +1,92 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+@source "../node_modules/liquid-glass-react/dist";
 
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --color-mainGreen: #00ff88;
+  --color-mainCyan: #00f7ff;
 }
 
-html {
-  scroll-behavior: smooth;
-}
 ::selection {
   background: #00ff88;
   color: black;
+}
+
+html.has-custom-cursor,
+html.has-custom-cursor * {
+  cursor: none !important;
+}
+
+@layer utilities {
+  .bg-grid {
+    background-image:
+      linear-gradient(to right, rgb(127 127 127 / 0.12) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(127 127 127 / 0.12) 1px, transparent 1px);
+    background-size: 64px 64px;
+    mask-image: radial-gradient(ellipse at center, black 20%, transparent 75%);
+  }
+
+  .text-outline {
+    -webkit-text-fill-color: transparent;
+    -webkit-text-stroke: 1.5px currentColor;
+  }
+
+  .text-gradient {
+    background: linear-gradient(90deg, #00ff88, #00f7ff 60%, #00ff88);
+    background-size: 200% auto;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: gradient-shift 6s linear infinite;
+  }
+
+  .animate-marquee {
+    animation: marquee var(--marquee-duration, 40s) linear infinite;
+  }
+
+  .animate-marquee-reverse {
+    animation: marquee var(--marquee-duration, 40s) linear infinite reverse;
+  }
+
+  .marquee-mask {
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 12%,
+      black 88%,
+      transparent
+    );
+  }
+
+  .noise {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes gradient-shift {
+  to {
+    background-position: 200% center;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-reverse,
+  .text-gradient {
+    animation: none;
+  }
 }
 
 @layer components {

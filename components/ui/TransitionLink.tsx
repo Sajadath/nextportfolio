@@ -1,14 +1,9 @@
 "use client";
-import { useAppDispatch } from "@/lib/hooks/reduxHooks";
-import { closeMenu, setIsInTransition } from "@/lib/slices/menuSlice";
+import { usePageTransition } from "@/lib/hooks/usePageTransition";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import AlreadyInThePageLine from "./AlreadyInThePageLine";
-
-function sleep(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 
 export const TransitionLink = ({
   children,
@@ -21,18 +16,10 @@ export const TransitionLink = ({
 }) => {
   const [isHovered, setIsHovered] = useState(false);
   const pathName = usePathname();
-  const router = useRouter();
-  const dispatch = useAppDispatch();
-  const handleLinkClick = async (e: React.MouseEvent<HTMLAnchorElement>) => {
+  const navigate = usePageTransition();
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
-    if (pathName === href) return;
-
-    dispatch(setIsInTransition(true));
-    dispatch(closeMenu());
-    await sleep(500);
-    router.push(href);
-    await sleep(1000);
-    dispatch(setIsInTransition(false));
+    navigate(href);
   };
 
   return (

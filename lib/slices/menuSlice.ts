@@ -4,12 +4,14 @@ interface InitialState {
   isMenuOpen: boolean;
   links: { href: string; label: string }[];
   isInTransition: boolean;
+  transitionTarget: string;
 }
 
 const initialState: InitialState = {
   isMenuOpen: false,
   links: [],
   isInTransition: false,
+  transitionTarget: "/",
 };
 
 const menuSlice = createSlice({
@@ -25,6 +27,9 @@ const menuSlice = createSlice({
     setIsInTransition: (state, action: { payload: boolean }) => {
       state.isInTransition = action.payload;
     },
+    setTransitionTarget: (state, action: { payload: string }) => {
+      state.transitionTarget = action.payload;
+    },
     setLinks: (
       state,
       action: { payload: { href: string; label: string }[] },
@@ -33,6 +38,11 @@ const menuSlice = createSlice({
     },
   },
 });
-export const { openMenu, closeMenu, setIsInTransition, setLinks } =
-  menuSlice.actions;
+export const {
+  openMenu,
+  closeMenu,
+  setIsInTransition,
+  setTransitionTarget,
+  setLinks,
+} = menuSlice.actions;
 export default menuSlice.reducer;

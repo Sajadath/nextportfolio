@@ -1,7 +1,11 @@
+import SmoothScroll from "@/components/SmoothScroll";
 import { ThemeProvider } from "@/components/theme-provider";
+import CustomCursor from "@/components/ui/CustomCursor";
 import ReduxProvider from "@/components/ui/ReduxProvider";
+import ScrollProgress from "@/components/ui/ScrollProgress";
 import type { Metadata } from "next";
 import { Space_Grotesk } from "next/font/google";
+import Footer from "./(home)/components/Footer";
 import HeaderProvider from "./(home)/components/HeaderProvider";
 import NavigationMenu from "./(home)/components/NavigationMenu";
 import TransitionEffect from "./(home)/components/TransitionEffect";
@@ -57,7 +61,9 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-status-bar-style" content="black" />
         <meta name="theme-color" content="#000000" />
       </head>
-      <body className={`${spaceGrotesk.className} relative antialiased`}>
+      <body
+        className={`${spaceGrotesk.className} relative bg-white antialiased dark:bg-black`}
+      >
         <ReduxProvider>
           <ThemeProvider
             attribute="class"
@@ -65,13 +71,20 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="flex h-dvh w-screen flex-col bg-white dark:bg-black">
+            <SmoothScroll>
+              <ScrollProgress />
               <HeaderProvider />
-              <div className="grow overflow-y-scroll">{children}</div>
-            </div>
+              <main className="min-h-dvh overflow-x-clip">{children}</main>
+              <Footer />
+              <NavigationMenu />
+              <TransitionEffect />
+              <CustomCursor />
+              <div
+                aria-hidden
+                className="noise pointer-events-none fixed inset-0 z-[95] opacity-[0.035] dark:opacity-[0.05]"
+              />
+            </SmoothScroll>
           </ThemeProvider>
-          <NavigationMenu />
-          <TransitionEffect />
         </ReduxProvider>
       </body>
     </html>
